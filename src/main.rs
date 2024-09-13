@@ -6,6 +6,11 @@ struct Planet {
 }
 
 impl Planet {
+
+    // Associated constant: Gravitational constant (G)
+    const G: f64 = 6.67e-11;
+
+    // Associated function: "constructor"
     fn new(name: &str, radius: f64, mass: f64) -> Self {
         Self {
             name: name.to_string(),
@@ -14,16 +19,19 @@ impl Planet {
         }
     }
 
+    // Method taking a shared reference
     fn surface_gravity(&self) -> f64 {
-        6.67e-11 * self.mass / (self.radius * self.radius)
+        Self::G * self.mass / (self.radius * self.radius)
     }
 
+    // Method taking a mutable reference
     fn shrink(&mut self, scale: f64) {
         self.radius *= scale;
     }
 
+    // Method taking ownership
     fn annihilate(self) {
-        println!("Good bye, {}!", self.name);
+        println!("Goodbye, {}!", self.name);
     }
 }
 
