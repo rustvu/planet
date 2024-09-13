@@ -6,7 +6,6 @@ struct Planet {
 }
 
 impl Planet {
-
     // Associated constant: Gravitational constant (G)
     const G: f64 = 6.67e-11;
 
@@ -37,8 +36,10 @@ impl Planet {
 
 fn main() {
     let earth = Planet::new("Earth", 6.378e6, 5.972e24);
+    println!("{earth:?}");
 
     let mut gaia = earth.clone();
+    gaia.name = "Gaia".to_string();
     gaia.shrink(0.5);
     println!("{:?}", gaia);
     gaia.annihilate();
